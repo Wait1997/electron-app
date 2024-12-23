@@ -8,12 +8,16 @@ function createWindow() {
     width: 960,
     height: 670,
     show: false,
+    frame: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
+      nodeIntegration: false,
+      contextIsolation: true,
+      sandbox: true
+    },
+    backgroundColor: '#f5f5f5'
   });
 
   mainWindow.on('ready-to-show', () => {

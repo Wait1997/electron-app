@@ -26,6 +26,7 @@
     "@electron-toolkit/eslint-config": "^1.0.2",
     "@rushstack/eslint-patch": "^1.10.3",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vueuse/core": "^12.2.0",
     "autoprefixer": "^10.4.20",

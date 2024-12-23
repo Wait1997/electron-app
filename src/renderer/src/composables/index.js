@@ -1,0 +1,1 @@
+export { isDark } from './dark';

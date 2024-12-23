@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { api } from '@renderer/services';
 
+// 获取用户相关的信息
 export const userStore = defineStore('user', {
   state: () => {
     return {

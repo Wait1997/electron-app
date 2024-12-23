@@ -1,13 +1,17 @@
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 // 获取当前语言
 export function useLang() {
-  const language = (navigator.language ?? 'zh-cn').toLocaleLowerCase();
-  const lang = ref(localStorage.getItem('lang') ?? language ?? 'zh-cn');
+  const { locale } = useI18n();
 
-  watch(lang, (val) => {
+  const setLang = (lang) => {
+    locale.value = lang;
+  };
+
+  watch(locale, (val) => {
     localStorage.setItem('lang', val);
   });
 
-  return lang;
+  return { locale, setLang };
 }

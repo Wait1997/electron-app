@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider>
+  <el-config-provider :locale="locale.value">
     <router-view />
   </el-config-provider>
 </template>
@@ -8,6 +8,11 @@
 import { onMounted } from 'vue';
 import { userStore } from '@renderer/store';
 import { storeToRefs } from 'pinia';
+import { useEnv, useLang } from '@renderer/hooks';
+
+// electron web
+const env = useEnv();
+const { locale } = useLang();
 
 const { getUserNamne, tokenInfo } = storeToRefs(userStore());
 // 输出当前用户信息
@@ -16,8 +21,10 @@ console.log(getUserNamne.value);
 console.log(tokenInfo.value);
 
 onMounted(() => {
-  // 输出 0 ~ 10 的随机数
-  window.api.randomInt(0, 10);
+  if (env.value === 'electron') {
+    // 输出 0 ~ 10 的随机数
+    window.api.randomInt(0, 10);
+  }
 
   userStore().setUser('Hello World');
 
