@@ -9,3 +9,7 @@ out
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+
+# auto generated
+src/renderer/auto-imports.d.ts
+src/renderer/components.d.ts

@@ -1,0 +1,15 @@
+@use "./base.scss";
+
+:root {
+  @include base.base-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include base.dark-theme;
+  }
+}
+
+html.dark {
+  @include base.dark-theme;
+}

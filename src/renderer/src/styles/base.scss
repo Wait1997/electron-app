@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@mixin fonts {
+  --s-radius-xxs: 4px;
+  --s-radius-xs: 10px;
+  --s-radius-s: 12px;
+  --s-radius-m: 16px;
+  --s-radius-l: 20px;
+  --s-radius-xl: 24px;
+  --s-radius-xxl: 32px;
+  --s-radius-xxxl: 36px;
+
+  --s-font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, SF Pro SC, SF Pro Display,
+    SF Pro Icons, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+
+  /* font-weight font-size/line height font-family */
+  --s-font-h1: 600 24px/36px var(--s-font-family);
+  --s-font-h2: 600 20px/30px var(--s-font-family);
+  --s-font-h3: 600 16px/24px var(--s-font-family);
+  --s-font-h4: 600 12px/14px var(--s-font-family);
+
+  --s-font-large: 400 20px/28px var(--s-font-family);
+  --s-font-base: 400 15px/24px var(--s-font-family);
+  --s-font-base-strong: 500 15px/24px var(--s-font-family);
+  --s-font-small: 400 14px/22px var(--s-font-family);
+  --s-font-small-strong: 500 14px/22px var(--s-font-family);
+
+  --s-font-xs: 400 12px/18px var(--s-font-family);
+  --s-font-xs-strong: 500 12px/18px var(--s-font-family);
+}
+
+@mixin base-theme {
+  @include fonts;
+  --s-color-primary: #0084ff;
+  --s-color-text-primary: #333;
+  --s-color-bg-primary: #fff;
+}
+
+@mixin dark-theme {
+  @include fonts;
+  --s-color-primary: #0084ff;
+  --s-color-text-primary: #fff;
+  --s-color-bg-primary: #000;
+}

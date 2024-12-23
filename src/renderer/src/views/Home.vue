@@ -1,32 +1,34 @@
 <template>
-  <img alt="logo" class="logo" src="../assets/electron.svg" />
-  <div class="creator">{{ $t('layout.title') }}</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
+  <div class="su-home-wrapper">
+    <el-button type="primary" @click="handleClick">Primary</el-button>
+    <div class="su-text">首页，根据主题改变颜色</div>
   </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
-    </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-    </div>
-    <div class="action">
-      <el-button type="primary">Primary</el-button>
-    </div>
-  </div>
-  <Versions />
 </template>
 
 <script setup>
+import { useEnv } from '@renderer/hooks/useEnv';
 // import { useI18n } from 'vue-i18n';
-import Versions from '@renderer/components/Versions.vue';
 
 // const { t, locale } = useI18n();
 
-const ipcHandle = () => window.electron.ipcRenderer.send('ping');
+// electron or web
+const env = useEnv();
+
+const handleClick = () => {
+  if (env.value === 'electron') {
+    window.electron.ipcRenderer.send('ping');
+  } else {
+    console.log('Hello World');
+  }
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.su-home-wrapper {
+  width: 100%;
+
+  .su-text {
+    color: var(--s-color-text-primary);
+  }
+}
+</style>

@@ -5,7 +5,7 @@ import icon from '../../resources/icon.png?asset';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 900,
+    width: 960,
     height: 670,
     show: false,
     autoHideMenuBar: true,
@@ -49,8 +49,8 @@ app.whenReady().then(() => {
 
   ipcMain.on('ping', () => console.log('pong'));
 
-  ipcMain.on('randomInt', (event, x, y) => {
-    console.log('event: ', event);
+  ipcMain.on('randomInt', (_, x, y) => {
+    // console.log('event: ', event);
     const randomInt = Math.floor(Math.random() * (y - x + 1)) + x;
     console.log('randomInt: ', randomInt);
   });

@@ -22,7 +22,7 @@ onMounted(() => {
   userStore().setUser('Hello World');
 
   // 测试接口 启用的本地服务
-  userStore().testApiGet();
-  userStore().testApiPost();
+  // userStore().testApiGet();
+  // userStore().testApiPost();
 });
 </script>
