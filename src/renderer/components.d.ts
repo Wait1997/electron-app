@@ -8,8 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ActionBar: typeof import('./src/components/SuHeader/ActionBar.vue')['default']
+    ChatInputArea: typeof import('./src/components/SuChat/ChatInputArea.vue')['default']
+    ChatRecords: typeof import('./src/components/SuChat/ChatRecords.vue')['default']
+    ChatRecordsArea: typeof import('./src/components/SuChat/ChatRecordsArea.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElSpace: typeof import('element-plus/es')['ElSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

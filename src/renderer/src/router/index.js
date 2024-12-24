@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 import Layout from '@renderer/layouts/index.vue';
 
-const Home = () => import('@renderer/views/Home.vue');
+const Chat = () => import('@renderer/views/Chat.vue');
 const Login = () => import('@renderer/views/Login.vue');
 const NotFound = () => import('@renderer/views/NotFound.vue');
 
@@ -15,7 +15,7 @@ const routes = [
     children: [
       {
         path: 'index',
-        component: Home
+        component: Chat
       }
     ]
   },
