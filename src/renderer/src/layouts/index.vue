@@ -1,10 +1,19 @@
 <template>
   <div class="su-layout-wrapper">
-    <div class="su-toggle-wrapper">
-      <el-button @click="handleClick">Toggle Theme {{ isDark ? 'Dark' : 'Light' }}</el-button>
-      <el-button @click="toggleLang">Toggle Language {{ locale }}</el-button>
+    <SUAsider>
+      <div class="su-toggle-wrapper">
+        <el-space direction="vertical">
+          <el-button @click="handleClick">Toggle Theme {{ isDark ? 'Dark' : 'Light' }}</el-button>
+          <el-button @click="toggleLang">Toggle Language {{ locale }}</el-button>
+        </el-space>
+      </div>
+    </SUAsider>
+    <div class="su-content-container">
+      <SuHeader :title="$t('layout.header.title')" />
+      <div class="su-content-wrapper">
+        <router-view />
+      </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -12,6 +21,8 @@
 import { isDark } from '@renderer/composables';
 import { useToggle } from '@vueuse/core';
 import { useLang } from '@renderer/hooks';
+import SuHeader from '@renderer/components/SuHeader/index.vue';
+import SUAsider from '@renderer/components/SuAsider/index.vue';
 
 const { locale, setLang } = useLang();
 const toggleDark = useToggle(isDark);
@@ -28,12 +39,28 @@ const toggleLang = () => {
 
 <style lang="scss" scoped>
 .su-layout-wrapper {
+  display: flex;
+  align-items: center;
   height: 100%;
   background-color: var(--s-color-bg-primary);
 
+  .su-content-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 200px);
+    height: 100%;
+
+    .su-content-wrapper {
+      width: 100%;
+      height: calc(100% - 50px);
+    }
+  }
+
   .su-toggle-wrapper {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    padding: 20px 0;
   }
 }
 </style>

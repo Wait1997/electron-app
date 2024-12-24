@@ -25,4 +25,30 @@ body,
 
 .body {
   font-size: var(--s-font-base);
+  box-sizing: border-box;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-button {
+  height: 2px;
+  width: 2px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a2a2a2;
 }

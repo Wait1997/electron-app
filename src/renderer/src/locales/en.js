@@ -1,5 +1,7 @@
 export default {
   layout: {
-    title: 'Powered by electron-vite'
+    header: {
+      title: 'sixunited product official'
+    }
   }
 };

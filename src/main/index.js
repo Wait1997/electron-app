@@ -15,7 +15,7 @@ function createWindow() {
       preload: join(__dirname, '../preload/index.js'),
       nodeIntegration: false,
       contextIsolation: true,
-      sandbox: true
+      sandbox: false
     },
     backgroundColor: '#f5f5f5'
   });
@@ -27,6 +27,25 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: 'deny' };
+  });
+
+  // 最小化窗口
+  ipcMain.on('min-window', () => {
+    mainWindow.minimize();
+  });
+
+  // 最大化窗口
+  ipcMain.on('max-window', () => {
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize();
+    } else {
+      mainWindow.maximize();
+    }
+  });
+
+  // 关闭窗口
+  ipcMain.on('close-window', () => {
+    mainWindow.close();
   });
 
   // 开发环境、生产环境加载
@@ -51,10 +70,7 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  ipcMain.on('ping', () => console.log('pong'));
-
   ipcMain.on('randomInt', (_, x, y) => {
-    // console.log('event: ', event);
     const randomInt = Math.floor(Math.random() * (y - x + 1)) + x;
     console.log('randomInt: ', randomInt);
   });

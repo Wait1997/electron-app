@@ -1,5 +1,7 @@
 export default {
   layout: {
-    title: '由 electron-vite 提供支持'
+    header: {
+      title: '六联产品官'
+    }
   }
 };
