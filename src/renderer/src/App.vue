@@ -14,11 +14,9 @@ import { useEnv, useLang } from '@renderer/hooks';
 const env = useEnv();
 const { locale } = useLang();
 
-const { getUserNamne, tokenInfo } = storeToRefs(userStore());
-// 输出当前用户信息
-console.log(getUserNamne.value);
+const { accessToken } = storeToRefs(userStore());
 // 输出当前用户token
-console.log(tokenInfo.value);
+console.log(accessToken.value);
 
 onMounted(() => {
   if (env.value === 'electron') {
@@ -26,10 +24,6 @@ onMounted(() => {
     window.api.randomInt(0, 10);
   }
 
-  userStore().setUser('Hello World');
-
-  // 测试接口 启用的本地服务
-  // userStore().testApiGet();
-  // userStore().testApiPost();
+  userStore().setToken('token');
 });
 </script>

@@ -7,20 +7,22 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ActionBar: typeof import('./src/components/SuHeader/ActionBar.vue')['default']
     ChatInputArea: typeof import('./src/components/SuChat/ChatInputArea.vue')['default']
-    ChatRecords: typeof import('./src/components/SuChat/ChatRecords.vue')['default']
     ChatRecordsArea: typeof import('./src/components/SuChat/ChatRecordsArea.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDropdown: typeof import('element-plus/es')['ElDropdown']
+    ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
+    ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElSpace: typeof import('element-plus/es')['ElSpace']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    ModelSelect: typeof import('./src/components/SuChat/ModelSelect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SuAsider: typeof import('./src/components/SuAsider/index.vue')['default']
-    SuContent: typeof import('./src/components/SuContent/index.vue')['default']
     SuHeader: typeof import('./src/components/SuHeader/index.vue')['default']
+    TextArea: typeof import('./src/components/SuChat/TextArea.vue')['default']
     ToolBar: typeof import('./src/components/SuHeader/ToolBar.vue')['default']
-    Versions: typeof import('./src/components/Versions.vue')['default']
   }
 }

@@ -1,95 +1,37 @@
-import Axios from 'axios';
-import { getHeaders, parseParams } from './utils';
+import { api } from './server';
 
-class Api {
-  constructor(options) {
-    this.controller = new AbortController();
-    this.axios = Axios.create(options.config);
+/**
+ * 创建新会话
+ * @param {*} {settingId: number; name?: string}
+ */
+export const apiCreateSession = async (params) => {
+  const resp = await api.post('/api/agent/session/create', params);
+  return resp;
+};
 
-    this.axios.interceptors.request.use((config) => {
-      return {
-        ...config,
-        headers: getHeaders(config)
-      };
-    });
+/**
+ * 删除会话
+ * @param {*} {sessionId: number}
+ */
+export const apiDeleteSession = async (params) => {
+  const resp = await api.post('/api/agent/session/delete', params);
+  return resp;
+};
 
-    this.axios.interceptors.response.use(
-      (response) => {
-        if (response.status === 200) {
-          return response;
-        }
-        return response;
-      },
-      (error) => {
-        return error;
-      }
-    );
-  }
+/**
+ * 根据配置id查询会话记录
+ * @param {*} {settingId: string}
+ */
+export const apiQuerySessionsBySettingId = async (params) => {
+  const resp = await api.post('/api/agent/session/list', params);
+  return resp;
+};
 
-  get(url, params, config) {
-    return this.api(url, { params, config }, 'get');
-  }
-
-  delete(url, params, config) {
-    return this.api(url, { params, config }, 'delete');
-  }
-
-  post(url, params, config) {
-    return this.api(url, { params, config }, 'post');
-  }
-
-  patch(url, params, config) {
-    return this.api(url, { params, config }, 'patch');
-  }
-
-  put(url, params, config) {
-    return this.api(url, { params, config }, 'put');
-  }
-
-  getSignal() {
-    const signal = this.controller.signal;
-    return signal;
-  }
-
-  abort() {
-    this.controller.abort();
-  }
-
-  async api(url, req, method = 'get') {
-    if (url.split('?')[1] ?? /get|delete/i.test(method)) {
-      url = parseParams(url, req.params);
-    }
-    let res = null;
-    method = method.toLocaleLowerCase();
-    switch (method) {
-      case 'get':
-        res = await this.axios.get(url, req.config);
-        return res.data;
-      case 'delete':
-        res = await this.axios.delete(url, req.config);
-        return res.data;
-      case 'post':
-        res = await this.axios.post(url, req.params, req.config);
-        return res.data;
-      case 'patch':
-        res = await this.axios.patch(url, req.params, req.config);
-        return res.data;
-      case 'put':
-        res = await this.axios.put(url, req.params, req.config);
-        return res.data;
-      default:
-        res = await this.axios.get(url, req.config);
-        return res.data;
-    }
-  }
+/**
+ * 根据会话id查询聊天记录
+ * @param {*} {sessionId: number}
+ */
+export async function apiQueryRecordsList(params) {
+  const resp = await api.post('/api/agent/session/record/list', params);
+  return resp;
 }
-
-// 请求超时时间
-const timeout = 30000;
-
-export const api = new Api({
-  config: {
-    // baseURL: 'http://localhost:8889',
-    timeout: timeout
-  }
-});
