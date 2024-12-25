@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// Note: This file is used to define the basic style of the project, such as font, color, etc.
+@use './variable.scss' as *;
 
 @mixin fonts {
   --s-radius-xxs: 4px;
@@ -34,7 +33,13 @@
 
 @mixin base-theme {
   @include fonts;
-  --s-color-primary: #0084ff;
+  // 主题色由浅到深分为五个阶梯
+  --s-color-primary-lighter: $primary-lighter;
+  --s-color-primary-light: $primary-light;
+  --s-color-primary: $primary;
+  --s-color-primary-dark: $primary-dark;
+  --s-color-primary-darker: $primary-darker;
+
   --s-color-text-primary: #333;
   --s-color-bg-primary: #f5f5f5;
   --s-color-border-primary: #e8e8e8;
@@ -42,7 +47,12 @@
 
 @mixin dark-theme {
   @include fonts;
-  --s-color-primary: #0084ff;
+  --s-color-primary-lighter: $primary-lighter;
+  --s-color-primary-light: $primary-light;
+  --s-color-primary: $primary;
+  --s-color-primary-dark: $primary-dark;
+  --s-color-primary-darker: $primary-darker;
+
   --s-color-text-primary: #fff;
   --s-color-bg-primary: #1a1a1a;
   --s-color-border-primary: #333;

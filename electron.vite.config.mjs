@@ -18,13 +18,15 @@ export default defineConfig({
       //  The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler' // or 'modern'
+          api: 'modern-compiler', // or 'modern'
+          additionalData: `@use "@renderer/styles/element.scss" as *;` // element-plus 修改主题 自动导入
         }
       }
     },
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '@renderer': resolve('src/renderer/src'),
+        '@main': resolve('src/main')
       }
     },
     plugins: [
@@ -32,10 +34,12 @@ export default defineConfig({
       vueJsx(),
       // element-plus 自动导入
       AutoImport({
-        resolvers: [ElementPlusResolver()]
+        // 使用预处理样式 不添加将会导致使用ElMessage ElNotification等组件时默认的主题色会覆盖自定义的主题色
+        resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
       }),
       Components({
-        resolvers: [ElementPlusResolver()]
+        // 配置 { importStyle: 'sass' } 使用预处理样式 让 element-plus 修改主题生效
+        resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
       })
     ],
     server: {

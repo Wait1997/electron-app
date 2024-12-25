@@ -20,7 +20,6 @@ export function useBreakpoints() {
     window.addEventListener('resize', updateBreakpoints);
   });
 
-  // 移除监听器以防止内存泄漏
   onUnmounted(() => {
     window.removeEventListener('resize', updateBreakpoints);
   });

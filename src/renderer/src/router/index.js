@@ -15,7 +15,12 @@ const routes = [
     children: [
       {
         path: 'index',
+        name: 'Chat',
         component: Chat
+      },
+      {
+        path: 'test',
+        component: () => import('@renderer/views/Test.vue')
       }
     ]
   },

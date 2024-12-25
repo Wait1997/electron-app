@@ -1,3 +1,4 @@
+@use './tailwind.scss';
 @use "./base.scss";
 
 :root {
@@ -24,7 +25,7 @@ body,
 }
 
 .body {
-  font-size: var(--s-font-base);
+  font: var(--s-font-base);
   box-sizing: border-box;
 }
 

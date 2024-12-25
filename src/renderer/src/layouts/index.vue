@@ -5,6 +5,14 @@
         <el-space direction="vertical">
           <el-button @click="handleClick">Toggle Theme {{ isDark ? 'Dark' : 'Light' }}</el-button>
           <el-button @click="toggleLang">Toggle Language {{ locale }}</el-button>
+          <el-select v-model="value" placeholder="Select" style="width: 150px">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
         </el-space>
       </div>
     </SUAsider>
@@ -18,6 +26,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { isDark } from '@renderer/composables';
 import { useToggle } from '@vueuse/core';
 import { useLang } from '@renderer/hooks';
@@ -35,6 +44,31 @@ const toggleLang = () => {
   const lang = locale.value === 'zh-cn' ? 'en' : 'zh-cn';
   setLang(lang);
 };
+
+const value = ref('');
+
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1'
+  },
+  {
+    value: 'Option2',
+    label: 'Option2'
+  },
+  {
+    value: 'Option3',
+    label: 'Option3'
+  },
+  {
+    value: 'Option4',
+    label: 'Option4'
+  },
+  {
+    value: 'Option5',
+    label: 'Option5'
+  }
+];
 </script>
 
 <style lang="scss" scoped>
