@@ -19,7 +19,8 @@ export default defineConfig({
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler', // or 'modern'
-          additionalData: `@use "@renderer/styles/element.scss" as *;` // element-plus 修改主题 自动导入
+          // element-plus 修改主题 自动导入
+          additionalData: `@use "@renderer/styles/element.scss" as *;`
         }
       }
     },

@@ -1,25 +1,21 @@
-/** @type {import('tailwindcss').Config} */
-
 // 生成颜色css变量名
 function genSimilarColorsName(brandName) {
   return {
     lighter: `var(--s-color-${brandName}-lighter)`,
     light: `var(--s-color-${brandName}-light)`,
-    base: `var(--s-color-${brandName})`,
+    normal: `var(--s-color-${brandName})`,
     dark: `var(--s-color-${brandName}-dark)`,
     darker: `var(--s-color-${brandName}-darker)`
   };
 }
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/renderer/src/**/*.{vue,js,ts,jsx,tsx}', './src/renderer/index.html'],
   theme: {
-    colors: {
-      // 覆盖默认配置
-    },
     extend: {
       colors: {
-        // 自定义color 优先级最高
+        // 自定义colors 优先级最高
         primary: genSimilarColorsName('primary'),
         info: genSimilarColorsName('info'),
         success: genSimilarColorsName('success'),

@@ -7,6 +7,9 @@ import App from './App.vue';
 
 import router from './router';
 import i18n from './locales/index.js';
+import { setTheme } from '@renderer/utils/theme';
+
+setTheme();
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);

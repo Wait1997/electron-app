@@ -56,11 +56,11 @@ export const getTheme = () => {
   return theme.value;
 };
 
-export const setTheme = (data = defaultThemeConfig) => {
-  const oldTheme = getTheme();
+export const setTheme = (data) => {
+  const currentTheme = getTheme();
 
   // 将传入配置与旧的主题合并，以填补缺省的值
-  data = merge(oldTheme, data || {});
+  data = merge(currentTheme, data);
 
   // 将缓存到浏览器
   const theme = useStorage(THEME_KEY, { defaultValue: data });

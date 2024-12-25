@@ -1,5 +1,4 @@
 // Note: This file is used to define the basic style of the project, such as font, color, etc.
-@use './variable.scss' as *;
 
 @mixin fonts {
   --s-radius-xxs: 4px;
@@ -31,14 +30,19 @@
   --s-font-xs-strong: 500 12px/18px var(--s-font-family);
 }
 
+/*
+在minxin中使用 $primary 会导致无效 即使通过函数传参也还是无效
+需要解决 --s-color-primary: $primary 无效
+*/
+
 @mixin base-theme {
   @include fonts;
   // 主题色由浅到深分为五个阶梯
-  --s-color-primary-lighter: $primary-lighter;
-  --s-color-primary-light: $primary-light;
-  --s-color-primary: $primary;
-  --s-color-primary-dark: $primary-dark;
-  --s-color-primary-darker: $primary-darker;
+  --s-color-primary-lighter: #c1e1ff;
+  --s-color-primary-light: #73b3ff;
+  --s-color-primary: #409eff;
+  --s-color-primary-dark: #1952cc;
+  --s-color-primary-darker: #003a8c;
 
   --s-color-text-primary: #333;
   --s-color-bg-primary: #f5f5f5;
@@ -47,11 +51,11 @@
 
 @mixin dark-theme {
   @include fonts;
-  --s-color-primary-lighter: $primary-lighter;
-  --s-color-primary-light: $primary-light;
-  --s-color-primary: $primary;
-  --s-color-primary-dark: $primary-dark;
-  --s-color-primary-darker: $primary-darker;
+  --s-color-primary-lighter: #c1e1ff;
+  --s-color-primary-light: #73b3ff;
+  --s-color-primary: #409eff;
+  --s-color-primary-dark: #1952cc;
+  --s-color-primary-darker: #003a8c;
 
   --s-color-text-primary: #fff;
   --s-color-bg-primary: #1a1a1a;
