@@ -8,8 +8,8 @@
 
 <style lang="scss" scoped>
 .su-asider-wrapper {
-  width: 200px;
-  min-width: 200px;
+  width: 100%;
+  min-width: 230px;
   height: 100%;
   background-color: #eee;
 }

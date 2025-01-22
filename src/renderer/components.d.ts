@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     ChatInputArea: typeof import('./src/components/SuChat/ChatInputArea.vue')['default']
     ChatRecordsArea: typeof import('./src/components/SuChat/ChatRecordsArea.vue')['default']
+    DraggablePanel: typeof import('./src/components/DraggablePanel/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']

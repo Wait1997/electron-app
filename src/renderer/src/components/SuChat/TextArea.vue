@@ -17,7 +17,7 @@ const inputValue = defineModel({ type: String });
 const props = defineProps({
   rows: {
     type: Number,
-    default: 4
+    default: 2
   },
   autosize: {
     type: [Boolean, Object],
@@ -31,6 +31,8 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .su-textarea {
+  height: 100%;
+
   :deep(.el-textarea__inner) {
     border: none;
     border-radius: 0;
@@ -40,6 +42,7 @@ const props = defineProps({
     padding-block: 0;
     padding-inline: 24px;
     max-width: 100%;
+    height: 100%;
   }
 }
 </style>
